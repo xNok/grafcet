@@ -1,0 +1,164 @@
+/*
+StyleSheet Name: Cssb
+Description: Used to give basis on web project
+*/
+
+/**
+ * Table of Contents:
+ *
+ * I   - Import tools
+ * II  - Variables
+ * III - Structure
+ * 0.0 - Reset
+ * 1.0 - Body
+ * 2.0 - Typography
+ * 3.0 - Elements/Modules
+ * 4.0 - Themes
+ */
+
+/*----------------------------------------------------------------*\
+        I_Import tools
+\*----------------------------------------------------------------*/
+
+//> npm install susy
+//@import "node_modules/susy/sass/susy";
+//> npm install breakpoint-sass
+//@import "node_modules/breakpoint-sass/stylesheets/breakpoint";
+//>npm install foundation-sites
+//@import 'node_modules/foundation-sites/scss/foundation';
+
+//@include foundation-everything();
+
+/*----------------------------------------------------------------*\
+        II_Variables
+\*----------------------------------------------------------------*/
+/*breakpoints*/
+$bkp-lg:970px;
+$bkp-md:800px;
+$bkp-sm:600px;
+
+/*color panel*/
+$color-1: white;
+$color-2: black;
+$color-3: red;
+
+$size: 50px;
+/*----------------------------------------------------------------*\
+        III_Structure
+\*----------------------------------------------------------------*/
+
+/**
+ * 0.0 - Reset
+ */ 
+
+ul, ol {
+    list-style: none;
+}
+
+//> This is a very basic css Reset
+//@import 'base/cssReset';
+
+/**
+ * 1.0 - Body
+ */
+#grafcet{
+    background-color: #004756;
+}
+
+
+/**
+ * 2.0 - Typographie
+ */
+
+
+/**
+ * 3.0 - Elements/Modules
+ */
+#grafcet .item, #grafcet .g_item{
+
+    background-color: #FFF;
+    //padding: 10px;
+    float: left;
+
+    border: 1px solid #000;
+    
+    position: relative;
+
+    p{
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+#grafcet .item{
+    height: $size;
+    width: $size; 
+}
+
+#grafcet .g_item{
+    width: 10%;
+
+    &:before{
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
+
+    .content{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+        
+        margin: 0;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+#grafcet .item:hover,#grafcet .g_item:hover{
+    background-color: #C5C1C1;
+}
+
+#grafcet th, td{
+    text-align: center;
+    border: 1px solid #000;
+    height: $size;
+}
+
+#grafcet td:hover{
+    background-color: #C5C1C1;
+}
+
+#grafcet .active_item{
+    background-color: #E5ACAC;
+}
+
+#grafcet #edges{
+    background-color: #C5C1C1;
+    height: 100%;
+}
+
+#grafcet #stack{
+    background-color: #C5C1C1;
+}
+
+/*
+ * require suzy
+ */
+
+
+/**
+ * 4.0 - Themes
+ */
+
+
+
+
+
