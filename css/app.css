@@ -55,10 +55,6 @@ ul, ol {
         -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%); }
 
-#grafcet .item {
-  height: 50px;
-  width: 50px; }
-
 #grafcet .g_item {
   width: 10%; }
   #grafcet .g_item.g_step:before {
@@ -82,25 +78,22 @@ ul, ol {
         -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%); }
 
-#grafcet .item:hover, #grafcet .g_item:hover {
+.item:hover, #grafcet .g_item:hover {
   background-color: #C5C1C1; }
 
-#grafcet th, td {
+.active_item, .active_Adj {
+  background-color: #E5ACAC; }
+
+#edges {
+  background-color: #C5C1C1;
+  height: 100%; }
+
+#edges th, #edges td {
   text-align: center;
   border: 1px solid #000;
   height: 50px; }
 
-#grafcet td:hover {
-  background-color: #C5C1C1; }
-
-#grafcet .active_item, .active_Adj {
-  background-color: #E5ACAC; }
-
-#grafcet #edges {
-  background-color: #C5C1C1;
-  height: 100%; }
-
-#grafcet #stack {
+#edges td:hover {
   background-color: #C5C1C1; }
 
 /*
