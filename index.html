@@ -28,6 +28,7 @@
 
 <body>
 	<header>
+		<!-- Banner -->
 		<div class="row">
 			<div class="medium-4 columns">
 				<img src="http://placehold.it/450x183&text=LOGO" alt="company logo">
@@ -37,33 +38,37 @@
 			</div>
 		</div>
 
-		<br>
+		<!-- Title bar -->
 		<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
 			<button class="menu-icon" type="button" data-toggle></button>
 			<div class="title-bar-title">Menu</div>
 		</div>
-		<div class="top-bar" id="stack">
-			<ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
-				<li class="has-submenu"><a href="#">Steps</a>
-					<ul class="submenu menu vertical" data-submenu>
-						<li><div data-type="Initial_Step" class="item step active_item"><p>Init</p></div></li>
-						<li><div class="item step "><p>X</p></div></li>
-					</ul>
-				</li>
-				<li class="has-submenu"><a href="#">Connexions</a>
-					<ul class="submenu menu vertical" data-submenu>
-						<li><div class="item connection"><p>Join</p></div></li>
-						<li><div class="item connection"><p>Fork</p></div></li>
-						<li><div class="item connection"><p>Split</p></div></li>
-						<li><div class="item connection"><p>Merge</p></div></li>
-					</ul>
-				</li>
-				<li class="has-submenu"><a href="#">Actions</a>
-					<ul class="submenu menu vertical" data-submenu>
-						<li><div class="item"><p>Erase</p></div></li>
-					</ul>
-				</li>
-			</ul>
+
+		<!-- Top bar -->
+		<div class=contain-to-grid sticky">
+			<div class="top-bar" id="stack">
+				<ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
+					<li class="has-submenu"><a href="#">Steps</a>
+						<ul class="submenu menu vertical" data-submenu>
+							<li><div data-type="Initial_Step" class="item step active_item"><p>Init</p></div></li>
+							<li><div class="item step "><p>X</p></div></li>
+						</ul>
+					</li>
+					<li class="has-submenu"><a href="#">Connexions</a>
+						<ul class="submenu menu vertical" data-submenu>
+							<li><div class="item connection"><p>Join</p></div></li>
+							<li><div class="item connection"><p>Fork</p></div></li>
+							<li><div class="item connection"><p>Split</p></div></li>
+							<li><div class="item connection"><p>Merge</p></div></li>
+						</ul>
+					</li>
+					<li class="has-submenu"><a href="#">Actions</a>
+						<ul class="submenu menu vertical" data-submenu>
+							<li><div class="item"><p>Erase</p></div></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</header>
 
@@ -75,8 +80,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="medium-4 columns">
-			<div id="edges">
+		<div id="edges" class="medium-4 columns">
+			<div >
 				<h2>Edge List</h2>
 				<table id="edgeList">
 					<thead>
@@ -95,7 +100,7 @@
 					</tbody>
 				</table>
 			</div>
-			<p>
+			<dic id="">
 				<h2>Adj List</h2>
 				<div id="adjList">
 					<span>Initials</span>	

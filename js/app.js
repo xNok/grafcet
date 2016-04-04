@@ -1,3 +1,5 @@
+$(document).foundation();
+
 /**
  * 0 - step require
  * 1 - transition required
