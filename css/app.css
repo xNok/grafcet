@@ -61,10 +61,14 @@ ul, ol {
 
 #grafcet .g_item {
   width: 10%; }
-  #grafcet .g_item:before {
+  #grafcet .g_item.g_step:before {
     content: "";
     display: block;
     padding-top: 100%; }
+  #grafcet .g_item.g_trans:before {
+    content: "";
+    display: block;
+    padding-top: 30%; }
   #grafcet .g_item .content {
     position: absolute;
     top: 50%;
@@ -89,7 +93,7 @@ ul, ol {
 #grafcet td:hover {
   background-color: #C5C1C1; }
 
-#grafcet .active_item {
+#grafcet .active_item, .active_Adj {
   background-color: #E5ACAC; }
 
 #grafcet #edges {
