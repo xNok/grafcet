@@ -151,8 +151,19 @@ $(document).ready(function(){
             //adj List
             if(active_item.attr("data-type") === "Initial_Step"){
                 adj_newVertice(true);
+                t.append(
+                    '<svg>'+
+                    '<use xlink:href="sprite.svg#initStep"></use>'+
+                    '</svg>'
+                );
+                
             }else{
                 adj_newVertice();
+                t.append(
+                    '<svg>'+
+                    '<use xlink:href="sprite.svg#step"></use>'+
+                    '</svg>'
+                );
             }
             
             //preparation next step
