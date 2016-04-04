@@ -63,11 +63,28 @@ function adj_newVertice(isInitial){
     AdjList['adjList'][step]["action"] = "";
     AdjList['adjList'][step]["nbr_adj"] = 0;
     AdjList['adjList'][step]["adj"] = new Array();
+
     AdjList['nbr_vertices']++;
 
     if(isInitial){
         AdjList['initialSteps'].push(step);
     }
+}
+
+/*
+ * Add grafic infos
+ */
+function adj_setCoordinate(step, data_x, data_y){
+    AdjList['adjList'][step]["data_x"] = data_x;
+    AdjList['adjList'][step]["data_y"] = data_y;
+}
+
+function adj_getX(step){
+    return AdjList.adjList[step].data_x;
+}
+
+function adj_getY(step){
+    return AdjList.adjList[step].data_y;
 }
 
 function adj_newAdj(step, adj, type, connection){
@@ -90,7 +107,6 @@ function adj_setConnection(step1, step2, type ,connection){
 //----- graphic functions -----
 
 function adj_draw(){
-
     var cList = $("#adjList ul");
     var iniList = $("#adjList span")
     cList.text(""); //clear
@@ -103,7 +119,7 @@ function adj_draw(){
         var li = $('<li/>')
         .addClass('vertices')
         .attr('data_step', index )
-        .text(index + " -> " + value.action)
+        .text(index + " -> " + value.action + " @(" + value.data_x + "," +  value.data_y +")")
         .appendTo(cList);
         var ul = $('<ul/>')
         .addClass('adj')
@@ -119,7 +135,24 @@ function adj_draw(){
         }
     });
 }
+
 //----- END AdjList -----
+
+//--------------------------------\\
+//----- START SVG Management -----\\
+//--------------------------------\\
+
+/*
+ * step
+ * initStep
+ * join
+ */
+function svg_get(id){
+    return '<svg>'+
+           '<use xlink:href="sprite.svg#'+id+'"></use>'+
+           '</svg>'
+}
+
 
 $(document).ready(function(){
 
@@ -151,21 +184,14 @@ $(document).ready(function(){
             //adj List
             if(active_item.attr("data-type") === "Initial_Step"){
                 adj_newVertice(true);
-                t.append(
-                    '<svg>'+
-                    '<use xlink:href="sprite.svg#initStep"></use>'+
-                    '</svg>'
-                );
-                
+                t.append(svg_get("initStep"));
             }else{
                 adj_newVertice();
-                t.append(
-                    '<svg>'+
-                    '<use xlink:href="sprite.svg#step"></use>'+
-                    '</svg>'
-                );
+                t.append(svg_get("step"));
             }
-            
+
+            adj_setCoordinate(step,t.attr("data-x"),t.attr("data-y"));
+
             //preparation next step
             adj_draw();
             step++;
@@ -195,6 +221,15 @@ $(document).ready(function(){
                 //AdjList
                 adj_newAdj(adj_waiting_step, data_step, type, "");
                 adj_draw();
+
+                //calculate
+                var deltaX = adj_getX(adj_waiting_step)-adj_getX(data_step);
+                var deltaY = adj_getY(adj_waiting_step)-adj_getY(data_step);
+                if(deltaX === -2 && deltaY === 0){
+                    var trans_x = Number(adj_getX(data_step))-1;
+                    var trans_y = adj_getY(data_step);
+                    $(".g_trans[data-x='"+trans_x+"'][data-y='"+trans_y+"']").append(svg_get("join"));
+                }
                 // adavance in prog
                 prog_step = 0;
             }

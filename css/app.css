@@ -65,7 +65,7 @@ body {
     content: "";
     display: block;
     padding-top: 30%; }
-  #grafcet .g_item.g_step img, #grafcet .g_item.g_step svg {
+  #grafcet .g_item.g_step svg, #grafcet .g_item.g_trans svg {
     position: absolute;
     top: 0;
     left: 0;
