@@ -108,148 +108,128 @@
 		</div>
 	</div>
 
-	<div class="row column">
-		<h4 style="margin: 0;" class="text-center">BREAKING NEWS</h4>
-	</div>
-	<hr>
-	<div class="row small-up-3 medium-up-4 large-up-5">
-		<div class="column">
-			<img src="http://placehold.it/400x370&text=Look at me!" alt="image for article">
-		</div>
-		<div class="column">
-			<img src="http://placehold.it/400x370&text=Look at me!" alt="image for article">
-		</div>
-		<div class="column">
-			<img src="http://placehold.it/400x370&text=Look at me!" alt="image for article">
-		</div>
-		<div class="column show-for-medium">
-			<img src="http://placehold.it/400x370&text=Look at me!" alt="image for article">
-		</div>
-		<div class="column show-for-large">
-			<img src="http://placehold.it/400x370&text=Look at me!" alt="image for article">
-		</div>
-	</div>
+	<!-- Code -->
 	<hr>
 	<div class="row column">
-		<h4 style="margin: 0;" class="text-center">LATEST STORIES</h4>
+		<h4 style="margin: 0;" class="text-center">CODE SECTION</h4>
 	</div>
 	<hr>
 	<div class="row">
 		<div class="large-8 columns" style="border-right: 1px solid #E3E5E8;">
 			<article>
+				<!-- Read Inputs -->
 				<div class="row">
-					<div class="large-6 columns">
-						<p><img src="http://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
+					<div class="large-8 columns">
+						<ul class="tabs" data-tabs id="example-tabs">
+						  <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Define</a></li>
+						  <li class="tabs-title"><a href="#panel2">PinMode</a></li>
+						  <li class="tabs-title"><a href="#panel3">Read</a></li>
+						</ul>
+						<div class="tabs-content" data-tabs-content="example-tabs">
+						  <div class="tabs-panel is-active" id="panel1">
+						    <textarea name="" id="" cols="30" rows="10">
+//Tables des affectations
+const int L_R1 = 7;
+const int L_G1 = 6;
+const int L_Y1 = 5;
+const int L_R2 = 4;
+const int L_G2 = 3;
+const int L_Y2 = 2;
+
+const int I0 = 8;
+const int I1 = 9;
+const int I2 = 10;
+const int I3 = 11;
+const int I4 = 12;
+
+//entrée par défault
+boolean i0 = false;
+boolean i1 = false;
+boolean i2 = false;
+boolean i3 = false;
+boolean i4 = false;						    	
+						    </textarea>
+						  </div>
+						  <div class="tabs-panel" id="panel2">
+						    <textarea name="" id="" cols="30" rows="10">
+//initialisation du port serie
+Serial.begin(9600);
+
+// initialize digital pin 13 as an output.
+pinMode(L_R1, OUTPUT);
+pinMode(L_G1, OUTPUT);
+pinMode(L_Y1, OUTPUT);
+pinMode(L_R2, OUTPUT);
+pinMode(L_G2, OUTPUT);
+pinMode(L_Y2, OUTPUT);
+
+pinMode(I0, INPUT);
+pinMode(I1, INPUT);
+pinMode(I2, INPUT);
+pinMode(I3, INPUT);
+pinMode(I4, INPUT);
+						    </textarea>
+						  </div>
+						  <div class="tabs-panel" id="panel3">
+						    <textarea name="" id="" cols="30" rows="10">
+i0 = digitalRead(I0);
+i1 = digitalRead(I1);
+i2 = digitalRead(I2);
+i3 = digitalRead(I3);
+i4 = digitalRead(I4);
+						    </textarea>
+						  </div>
+						</div>					
 					</div>
-					<div class="large-6 columns">
-						<h5><a href="#">'Death Star' Vaporizes Its Own Planet</a></h5>
-						<p>
-							<span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-							<span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-							<span><i class="fi-comments"> 6 comments</i></span>
-						</p>
+					<div class="large-4 columns">
+						<h5><a href="#">Inputs</a></h5>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
+					</div>
+				</div>
+				<hr>		
+				<!-- Steps Structure définition -->
+				<div class="row">
+					<div class="large-8 columns">
+						<textarea name="" id="" cols="30" rows="10"></textarea>
+					</div>
+					<div class="large-4 columns">
+						<h5><a href="#">Step code structure</a></h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
 					</div>
 				</div>
 				<hr>
+				<!-- Calculate Transitions -->
 				<div class="row">
-					<div class="large-6 columns">
-						<p><img src="http://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
+					<div class="large-8 columns">
+						<textarea name="" id="" cols="30" rows="10"></textarea>
 					</div>
-					<div class="large-6 columns">
-						<h5><a href="#">NASA's SLS Rocket Sheds Saturn V Color Scheme in Design Review</a></h5>
-						<p>
-							<span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-							<span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-							<span><i class="fi-comments"> 6 comments</i></span>
-						</p>
+					<div class="large-4 columns">
+						<h5><a href="#">Calculate Transitions</a></h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
 					</div>
 				</div>
 				<hr>
+				<!-- Down steps -->
 				<div class="row">
-					<div class="large-6 columns">
-						<p><img src="http://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
+					<div class="large-8 columns">
+						<textarea name="" id="" cols="30" rows="10"></textarea>
 					</div>
-					<div class="large-6 columns">
-						<h5><a href="#">Ingredients for Life Were Always Present on Earth, Comet Suggests</a></h5>
-						<p>
-							<span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-							<span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-							<span><i class="fi-comments"> 6 comments</i></span>
-						</p>
+					<div class="large-4 columns">
+						<h5><a href="#">Down Steps</a></h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
 					</div>
 				</div>
 				<hr>
+				<!-- Up steps -->
 				<div class="row">
-					<div class="large-6 columns">
-						<p><img src="http://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
+					<div class="large-8 columns">
+						<textarea name="" id="" cols="30" rows="10"></textarea>
 					</div>
-					<div class="large-6 columns">
-						<h5><a href="#">Astronaut's Watch Worn on the Moon Sells for Record $1.6 Million</a></h5>
-						<p>
-							<span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-							<span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-							<span><i class="fi-comments"> 6 comments</i></span>
-						</p>
+					<div class="large-4 columns">
+						<h5><a href="#">Up Steps</a></h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
 					</div>
 				</div>
-				<hr>
-				<div class="row">
-					<div class="large-6 columns">
-						<p><img src="http://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
-					</div>
-					<div class="large-6 columns">
-						<h5><a href="#">Interstellar Dust on the Galaxy's Magnetic Field | Space Wallpaper</a></h5>
-						<p>
-							<span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-							<span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-							<span><i class="fi-comments"> 6 comments</i></span>
-						</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-					</div>
-				</div>
-				<hr>
-				<div class="row">
-					<div class="large-6 columns">
-						<p><img src="http://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
-					</div>
-					<div class="large-6 columns">
-						<h5><a href="#">Explore the Moon (Virtually) with These Awesome Global Maps</a></h5>
-						<p>
-							<span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-							<span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-							<span><i class="fi-comments"> 6 comments</i></span>
-						</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-					</div>
-				</div>
-				<hr>
-				<div class="row">
-					<div class="large-6 columns">
-						<p><img src="http://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
-					</div>
-					<div class="large-6 columns">
-						<h5><a href="#">Best Space Books and Sci-Fi: A Space.com Reading List</a></h5>
-						<p>
-							<span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-							<span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-							<span><i class="fi-comments"> 6 comments</i></span>
-						</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-					</div>
-				</div>
-				<hr>
-				<ul class="pagination" role="navigation" aria-label="Pagination">
-					<li class="disabled">Previous <span class="show-for-sr">page</span></li>
-					<li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-					<li><a href="#" aria-label="Page 2">2</a></li>
-					<li><a href="#" aria-label="Page 3">3</a></li>
-					<li><a href="#" aria-label="Page 4">4</a></li>
-					<li><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
-				</ul>
 			</article>
 		</div>
 		<div class="large-4 columns">
@@ -333,7 +313,28 @@
 			</aside>
 		</div>
 	</div>
-
+	<hr>
+	<div class="row column">
+		<h4 style="margin: 0;" class="text-center">CODE SECTION</h4>
+	</div>
+	<hr>
+	<div class="row small-up-3 medium-up-4 large-up-5">
+		<div class="column">
+			<img src="http://placehold.it/400x370&text=Look at me!" alt="image for article">
+		</div>
+		<div class="column">
+			<img src="http://placehold.it/400x370&text=Look at me!" alt="image for article">
+		</div>
+		<div class="column">
+			<img src="http://placehold.it/400x370&text=Look at me!" alt="image for article">
+		</div>
+		<div class="column show-for-medium">
+			<img src="http://placehold.it/400x370&text=Look at me!" alt="image for article">
+		</div>
+		<div class="column show-for-large">
+			<img src="http://placehold.it/400x370&text=Look at me!" alt="image for article">
+		</div>
+	</div>
 
 
 	<footer>
