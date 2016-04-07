@@ -99,9 +99,9 @@ function adj_setAction(step, action){
 }
 
 function adj_setConnection(step1, step2, type ,connection){
-    AdjList['adjList'][step]["adj"]["X"+adj] = new Array();
-    AdjList['adjList'][step]["adj"]["X"+adj]["type"] = type;
-    AdjList['adjList'][step]["adj"]["X"+adj]["connection"] = connection;
+    AdjList['adjList'][step]["adj"]["X"+step2] = new Array();
+    AdjList['adjList'][step]["adj"]["X"+step2]["type"] = type;
+    AdjList['adjList'][step]["adj"]["X"+step2]["connection"] = connection;
 }
 
 //----- graphic functions -----
@@ -136,6 +136,26 @@ function adj_draw(){
     });
 }
 
+adj_newVertice();
+adj_newVertice();
+adj_newVertice();
+adj_newVertice();
+adj_newVertice();
+
+adj_newAdj(0, 1, "join" , "i0");
+adj_newAdj(1, 2,  "join" , "i1");
+adj_newAdj(1, 3,  "join" , "i2");
+adj_newAdj(3, 4,  "join" , "i3");
+adj_newAdj(1, 4,  "join" , "i1");
+
+adj_setAction(0, "KM42");
+adj_setAction(1, "KM2");
+adj_setAction(2, "KM1");
+adj_setAction(3, "KM2");
+
+
+
+
 //----- END AdjList -----
 
 //--------------------------------\\
@@ -155,6 +175,8 @@ function svg_get(id){
 
 
 $(document).ready(function(){
+
+    adj_draw();
 
     //element selection
     var active_item = $('.item').first();
@@ -235,18 +257,4 @@ $(document).ready(function(){
             }
         } 
     })
-
-    //création de la grille
-    for (var i = 0; i <= 19; i++) {
-        for (var j = 0; j <= 9; j++) {
-
-            var data_string = ' data-x="'+i+'" data-y="'+j+'" ';
-
-            if( i % 2){ // steps cell
-             $("#grafcet-schema").append('<div class="g_item g_trans"'+ data_string +'><div class="content"></div></div>');
-            }else{ // transition cell
-             $("#grafcet-schema").append('<div class="g_item g_step"'+ data_string +'><div class="content"></div></div>');
-         }
-     }
- }
 });

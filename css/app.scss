@@ -25,9 +25,9 @@ Description: Used to give basis on web project
 //> npm install breakpoint-sass
 //@import "node_modules/breakpoint-sass/stylesheets/breakpoint";
 //>npm install foundation-sites
-//@import 'node_modules/foundation-sites/scss/foundation';
+@import 'node_modules/foundation-sites/scss/foundation';
 
-//@include foundation-everything();
+@include foundation-everything();
 
 /*----------------------------------------------------------------*\
         II_Variables
@@ -42,7 +42,7 @@ $color-1: white;
 $color-2: black;
 $color-3: red;
 
-$size: 50px;
+$size: 50;
 /*----------------------------------------------------------------*\
         III_Structure
 \*----------------------------------------------------------------*/
@@ -155,13 +155,6 @@ body{
 #edges td:hover{
     background-color: #C5C1C1;
 }
-
-
-
-/*
- * require suzy
- */
-
 
 /**
  * 4.0 - Themes
