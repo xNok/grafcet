@@ -1,11 +1,6 @@
 (function($) {
 
-
     $.fn.createGrid = function() {
-
-        console.log($('this'));
-
-
         for (var i = 0; i <= 19; i++) {
             for (var j = 0; j <= 9; j++) {
                 var data_string = ' data-x="'+i+'" data-y="'+j+'" ';
@@ -17,6 +12,10 @@
                }
            }
        }
+    }
+
+    $.fn.drawStepOnGrid = function(step) {
+      $(this).children('div.content').text(step);
     }
 
 }(jQuery));

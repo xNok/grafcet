@@ -2,18 +2,16 @@
 //----- START ListOfEdges -----\\
 //-----------------------------\\
 
-var ListOfEdges  = new Array();
-var edg_buffer = new Array();
-
-function edg_initBuffer(){
-    edg_buffer['step1'] = "";
-    edg_buffer['step2'] = "";
-    edg_buffer['c'] = "";
-    edg_buffer['type'] = "";
+function ListOfEdeges(){
+    this.initialSteps = new Array();
+    this.links = new Array();
 }
 
-function edg_addLink(){
-    ListOfEdges.push(edg_buffer)
+function Edges(){
+    this.step1 = "";
+    this.step2 = "";
+    this.receptivity = "";
+    this.type = "";
 }
 
 //----- END ListOfEdges -----
@@ -21,31 +19,52 @@ function edg_addLink(){
 //-------------------------\\
 //----- START AdjList -----\\
 //-------------------------\\
+//
+// Schema definition
+// .
+// +--_ nbr_vertices int
+// +--_ initialSteps int[]
+// +--_ adjList
+// |  +--_ step
+// |  |  +--_ action
+// |  |  +--_ coordinate
+// |  |  |  +-- data_x
+// |  |  |  +-- data_y
+// |  |  +--_ nbr_vertices int
+// |  |  +--_ adj
+// |  |  |  +--_ step
+// |  |  |  |  +-- type
+// |  |  |  |  +-- connection
 
-var AdjList  = new Array();
-var adj_waiting_step = 0;
+function AdjList() {
+  this.nbr_vertices = 0;
+  this.adjList = new Array();
+  this.initialSteps = new Array();
 
-AdjList['nbr_vertices'] = 0;
-AdjList['adjList'] = new Array(); 
-AdjList['initialSteps'] = new Array();
+  this.newVertice = adj_newVertice;
+  this.newInitialVertice = adj_newInitialVertice;
+  this.setCoordinate = adj_setCoordinate;
+  this.getX = adj_getX;
+  this.getY = adj_getY;
+  this.newAdj = adj_newAdj;
+  this.setAction = adj_setAction
+  this.setConnection = adj_setConnection;
+}
 
-function adj_newVertice(isInitial){
+function adj_newVertice(){
     step = AdjList['nbr_vertices'];
     AdjList['adjList'][step] = new Array();
     AdjList['adjList'][step]["action"] = "";
     AdjList['adjList'][step]["nbr_adj"] = 0;
     AdjList['adjList'][step]["adj"] = new Array();
-
     AdjList['nbr_vertices']++;
-
-    if(isInitial){
-        AdjList['initialSteps'].push(step);
-    }
 }
 
-/*
- * Add grafic infos
- */
+function adj_newInitialVertice(){
+    AdjList['initialSteps'].push(step);
+    adj_newVertice();
+}
+
 function adj_setCoordinate(step, data_x, data_y){
     AdjList['adjList'][step]["data_x"] = data_x;
     AdjList['adjList'][step]["data_y"] = data_y;
