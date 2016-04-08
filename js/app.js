@@ -11,130 +11,11 @@ $(document).foundation();
  * Grafcet desciption
  */
 
-//-----------------------------\\
-//----- START ListOfEdges -----\\
-//-----------------------------\\
 
-var ListOfEdges  = new Array();
-var edg_buffer = new Array();
-
-function edg_initBuffer(){
-    edg_buffer['step1'] = "";
-    edg_buffer['step2'] = "";
-    edg_buffer['c'] = "";
-    edg_buffer['type'] = "";
-}
-
-function edg_addLink(){
-    ListOfEdges.push(edg_buffer)
-}
-
-function edg_addRow(text){
-    $(text+ ' tbody').append(
-        '<tr>'+
-        '<td></td>'+
-        '<td></td>'+
-        '<td></td>'+
-        '<td></td>'+
-        '</tr>'
-        ); 
-}
-
-function edg_write2lastRowCell(x, text) {
-    $('#edgeList tr:last td:eq('+ x +')').text(text);
-}
-
-//----- END ListOfEdges -----
-
-//-------------------------\\
-//----- START AdjList -----\\
-//-------------------------\\
-
-var AdjList  = new Array();
-var adj_waiting_step = 0;
-
-AdjList['nbr_vertices'] = 0;
-AdjList['adjList'] = new Array(); 
-AdjList['initialSteps'] = new Array();
-
-function adj_newVertice(isInitial){
-    step = AdjList['nbr_vertices'];
-    AdjList['adjList'][step] = new Array();
-    AdjList['adjList'][step]["action"] = "";
-    AdjList['adjList'][step]["nbr_adj"] = 0;
-    AdjList['adjList'][step]["adj"] = new Array();
-
-    AdjList['nbr_vertices']++;
-
-    if(isInitial){
-        AdjList['initialSteps'].push(step);
-    }
-}
-
-/*
- * Add grafic infos
- */
-function adj_setCoordinate(step, data_x, data_y){
-    AdjList['adjList'][step]["data_x"] = data_x;
-    AdjList['adjList'][step]["data_y"] = data_y;
-}
-
-function adj_getX(step){
-    return AdjList.adjList[step].data_x;
-}
-
-function adj_getY(step){
-    return AdjList.adjList[step].data_y;
-}
-
-function adj_newAdj(step, adj, type, connection){
-    AdjList['adjList'][step]["nbr_adj"]++;
-    AdjList['adjList'][step]["adj"]["X"+adj] = new Array();
-    AdjList['adjList'][step]["adj"]["X"+adj]["type"] = type;
-    AdjList['adjList'][step]["adj"]["X"+adj]["connection"] = connection;
-}
-
-function adj_setAction(step, action){
-    AdjList['adjList'][step]["action"] = action;
-}
-
-function adj_setConnection(step1, step2, type ,connection){
-    AdjList['adjList'][step]["adj"]["X"+step2] = new Array();
-    AdjList['adjList'][step]["adj"]["X"+step2]["type"] = type;
-    AdjList['adjList'][step]["adj"]["X"+step2]["connection"] = connection;
-}
 
 //----- graphic functions -----
 
-function adj_draw(){
-    var cList = $("#adjList ul");
-    var iniList = $("#adjList span")
-    cList.text(""); //clear
-    iniList.text("Initials:");
-    for(var index in AdjList.initialSteps) {
-        iniList.append(index+",");
-    }
 
-    $.each(AdjList.adjList, function(index, value){
-        var li = $('<li/>')
-        .addClass('vertices')
-        .attr('data_step', index )
-        .text(index + " -> " + value.action + " @(" + value.data_x + "," +  value.data_y +")")
-        .appendTo(cList);
-        var ul = $('<ul/>')
-        .addClass('adj')
-        .attr('data_step', index )
-        .appendTo(li);  
-
-        for(var index in value.adj) { 
-            var ul_li = $('<li/>')
-            .addClass('adj')
-            .text(index + " -> " + value.adj[index].type + ", " + value.adj[index].connection)
-            .attr('data_step', index)
-            .appendTo(ul);
-        }
-    });
-}
 
 adj_newVertice();
 adj_newVertice();
@@ -152,8 +33,6 @@ adj_setAction(0, "KM42");
 adj_setAction(1, "KM2");
 adj_setAction(2, "KM1");
 adj_setAction(3, "KM2");
-
-
 
 
 //----- END AdjList -----
