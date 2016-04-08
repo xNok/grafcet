@@ -1,0 +1,1 @@
+!function(i){i.fn.createGrid=function(){console.log(i("this"));for(var t=0;19>=t;t++)for(var a=0;9>=a;a++){var s=' data-x="'+t+'" data-y="'+a+'" ';t%2?i(this).append('<div class="g_item g_trans"'+s+'><div class="content"></div></div>'):i(this).append('<div class="g_item g_step"'+s+'><div class="content"></div></div>')}}}(jQuery);

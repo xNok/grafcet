@@ -75,20 +75,6 @@
     <div id="grafcet-schema">
     </div>
 </div>
-
-//création de la grille
-for (var i = 0; i <= 19; i++) {
-    for (var j = 0; j <= 9; j++) {
-
-        var data_string = ' data-x="'+i+'" data-y="'+j+'" ';
-
-        if( i % 2){ // steps cell
-         $("#grafcet-schema").append('<div class="g_item g_trans"'+ data_string +'><div class="content"></div></div>');
-        }else{ // transition cell
-         $("#grafcet-schema").append('<div class="g_item g_step"'+ data_string +'><div class="content"></div></div>');
-        }
-     }
- }
 		</div>
 		<div id="edges" class="medium-4 columns">
 			<div>
@@ -407,6 +393,7 @@ i4 = digitalRead(I4);
 	<!-- JS -->
 <script src="/vendors/jquery-2.1.4.min.js"></script>
 <script src="/vendors/foundation-6/js/foundation.min.js"></script>
+<script src="/js/jquery.grafcetGrid.js"></script>
 <script src="/js/app.js"></script>
 
 </body>

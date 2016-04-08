@@ -177,6 +177,7 @@ function svg_get(id){
 $(document).ready(function(){
 
     adj_draw();
+    $('#grafcet-schema').createGrid();
 
     //element selection
     var active_item = $('.item').first();
