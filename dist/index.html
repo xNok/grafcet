@@ -23,6 +23,7 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" media="screen" href="../vendors/gridster/dist/jquery.gridster.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/app.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/foundation-icons/foundation-icons.css">
 </head>
 
 <body>
@@ -77,6 +78,36 @@
 </div>
 		</div>
 		<div id="edges" class="medium-4 columns">
+			<div class="container">
+  <h3 class="text-center">Jouer le grafcet</h3>
+  <hr/>
+  <div class="player text-center">
+    <button type="button" id="button_fbw" class="button" onclick='buttonRewindPress()'>
+      <i class="fi-previous"></i>
+    </button>
+    
+    <button type="button" id="button_bw" class="button" onclick='buttonBackPress()'>
+      <i class="fi-rewind"></i>
+    </button>
+    
+    <button type="button" id="button_play" class="button" onclick='buttonPlayPress()'>
+      <i class="fi-play"></i>
+    </button>
+    
+    <button type="button" id="button_stop" class="button" onclick='buttonStopPress()'>
+      <i class="fi-stop"></i>
+    </button>
+    
+    <button type="button" id="button_fw" class="button" onclick='buttonForwardPress()'>
+      <i class="fi-fast-forward"></i>
+    </button>
+    
+    <button type="button" id="button_ffw" class="button" onclick='buttonFastforwardPress()'>
+      <i class="fi-next"></i>
+    </button>    
+  </div>
+</div>
+			<hr>
 			<div>
     <h2>Edge List</h2>
     <table id="edgeList">
@@ -118,8 +149,7 @@
 				<!-- Read Inputs -->
 				<div class="row">
 					<div class="large-8 columns">
-					
-<ul class="tabs" data-tabs id="example-tabs">
+					<ul class="tabs" data-tabs id="example-tabs">
     <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Define</a></li>
     <li class="tabs-title"><a href="#panel2">PinMode</a></li>
     <li class="tabs-title"><a href="#panel3">Read</a></li>
@@ -127,19 +157,20 @@
 <div class="tabs-content" data-tabs-content="example-tabs">
     <div class="tabs-panel is-active" id="panel1">
         <textarea name="" id="define" cols="30" rows="10">
-            //Tables des affectations
-const int L_R1 = 7;
-const int L_G1 = 6;
-const int L_Y1 = 5;
-const int L_R2 = 4;
-const int L_G2 = 3;
-const int L_Y2 = 2;
+            // definition des cigles
+#define L_R1 7
+#define L_G1 6
+#define L_Y1 5
+#define L_R2 4
+#define L_G2 3
+#define L_Y2 2
 
-const int I0 = 8;
-const int I1 = 9;
-const int I2 = 10;
-const int I3 = 11;
-const int I4 = 12;
+#define I0 8
+#define I1 9
+#define I2 10
+#define I3 11
+#define I4 12
+#define I5 13
 
 //entrée par défault
 boolean i0 = false;
@@ -147,6 +178,11 @@ boolean i1 = false;
 boolean i2 = false;
 boolean i3 = false;
 boolean i4 = false;
+boolean i5 = false;
+
+//Données du grafcet
+#define MaxEtape 7
+#define MaxTransition 7
         </textarea>
     </div>
     <div class="tabs-panel" id="panel2">
@@ -188,6 +224,7 @@ i4 = digitalRead(I4);
 <hr>        
 
 				</div>
+				<hr>
 				<!-- Steps Structure définition -->
 				<div class="row">
 					<div class="large-8 columns">
@@ -199,38 +236,6 @@ i4 = digitalRead(I4);
 					</div>
 				</div>
 				<hr>
-				<!-- Calculate Transitions -->
-				<div class="row">
-					<div class="large-8 columns">
-						<textarea name="" id="" cols="30" rows="10"></textarea>
-					</div>
-					<div class="large-4 columns">
-						<h5><a href="#">Calculate Transitions</a></h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-					</div>
-				</div>
-				<hr>
-				<!-- Down steps -->
-				<div class="row">
-					<div class="large-8 columns">
-						<textarea name="" id="" cols="30" rows="10"></textarea>
-					</div>
-					<div class="large-4 columns">
-						<h5><a href="#">Down Steps</a></h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-					</div>
-				</div>
-				<hr>
-				<!-- Up steps -->
-				<div class="row">
-					<div class="large-8 columns">
-						<textarea name="" id="" cols="30" rows="10"></textarea>
-					</div>
-					<div class="large-4 columns">
-						<h5><a href="#">Up Steps</a></h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-					</div>
-				</div>
 			</article>
 		</div>
 		<div class="large-4 columns">

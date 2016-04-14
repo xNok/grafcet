@@ -17,41 +17,50 @@ var ListOfEdges  = new Array();
 //------------------------------\\
 
 AdjList.newInitialVertice();
+AdjList.setCoordinate(0,0,4);
 AdjList.newVertice();
+AdjList.setCoordinate(1,2,3);
 AdjList.newVertice();
+AdjList.setCoordinate(2,2,5);
 AdjList.newVertice();
+AdjList.setCoordinate(3,4,4);
 AdjList.newVertice();
+AdjList.setCoordinate(4,6,3);
+AdjList.newVertice();
+AdjList.setCoordinate(5,6,5);
+AdjList.newVertice();
+AdjList.setCoordinate(6,8,4);
 
-AdjList.newAdj(0, 1, "join" , "i0");
-AdjList.newAdj(1, 2,  "join" , "i1");
-AdjList.newAdj(1, 3,  "join" , "i2");
-AdjList.newAdj(3, 4,  "join" , "i3");
-AdjList.newAdj(1, 4,  "join" , "i1");
+AdjList.newAdj(0, 1, "join" , "i1");
+AdjList.newAdj(0, 2, "join" , "i2");
+AdjList.newAdj(1, 3, "join" , "i2");
+AdjList.newAdj(2, 3, "join" , "i1");
+AdjList.newAdj(3, 4, "join" , "i3");
+AdjList.newAdj(3, 5, "join" , "i3");
+AdjList.newAdj(4, 6, "join" , "i4");
+AdjList.newAdj(5, 6, "join" , "i5");
+AdjList.newAdj(6, 0, "join" , "i2");
 
-AdjList.setAction(0, "KM42");
-AdjList.setAction(1, "KM2");
-AdjList.setAction(2, "KM1");
-AdjList.setAction(3, "KM2");
 
-//--------------------------------\\
-//----- START SVG Management -----\\
-//--------------------------------\\
+AdjList.setAction(0, "L_R1");
+AdjList.setAction(1, "L_G1");
+AdjList.setAction(2, "L_Y1");
+AdjList.setAction(3, "L_R1");
+AdjList.setAction(4, "L_G2");
+AdjList.setAction(5, "L_Y2");
+AdjList.setAction(6, "L_R2");
 
-/*
-* step
-* initStep
-* join
-*/
-function svg_get(id){
-    return '<svg>'+
-    '<use xlink:href="sprite.svg#'+id+'"></use>'+
-    '</svg>'
-}
+console.log(AdjList);
+
+var Edges = adj2edj(AdjList);
+$("#edgeList").edg_draw(Edges);
 
 $(document).ready(function(){
 
     $('#adjList').adj_draw();
     $('#grafcet-schema').createGrid();
+    $('#grafcet-schema').loadGrid(AdjList);
+    generate(AdjList);
 
     //element selection
     var active_item = $('.item').first();

@@ -2,16 +2,11 @@
 //----- START ListOfEdges -----\\
 //-----------------------------\\
 
-function ListOfEdeges(){
-    this.initialSteps = new Array();
-    this.links = new Array();
-}
-
-function Edges(){
-    this.step1 = "";
-    this.step2 = "";
-    this.receptivity = "";
-    this.type = "";
+function Edge(step1, step2, receptivity, type){
+    this.step1 = step1;
+    this.step2 = step2;
+    this.receptivity = receptivity;
+    this.type = type;
 }
 
 //----- END ListOfEdges -----
@@ -93,4 +88,20 @@ function adj_setConnection(step1, step2, type ,connection){
     AdjList['adjList'][step]["adj"]["X"+step2] = new Array();
     AdjList['adjList'][step]["adj"]["X"+step2]["type"] = type;
     AdjList['adjList'][step]["adj"]["X"+step2]["connection"] = connection;
+}
+
+//--------------------------------\\
+//----- START Transformation -----\\
+//--------------------------------\\
+
+function adj2edj(adjList){
+  var Edges = new Array();
+
+  for (i in adjList.adjList) {
+    for (j in adjList.adjList[i].adj) {
+      Edges.push(new Edge(i, j.slice( 1 ), adjList.adjList[i].adj[j].connection, adjList.adjList[i].adj[j].type));
+    }
+  }
+
+  return Edges;
 }

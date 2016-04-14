@@ -1,6 +1,5 @@
 (function($) {
 
-
     $.fn.edg_addRow = function() {
         $(this).children('tbody').append(
             '<tr>'+
@@ -41,6 +40,17 @@
                 .appendTo(ul);
             }
         });
+    }
+
+    $.fn.edg_draw = function(edgList){
+        for (var i = edgList.length - 1; i >= 0; i--) {
+            $(this).edg_write2lastRowCell(0, edgList[i].step1);
+            $(this).edg_write2lastRowCell(1, edgList[i].step2);                
+            $(this).edg_write2lastRowCell(2, edgList[i].type);
+            $(this).edg_write2lastRowCell(3, edgList[i].receptivity);
+            $(this).edg_addRow();
+        }
+
     }
 
     $.fn.edg_write2lastRowCell = function(x, text) {
