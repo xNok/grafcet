@@ -131,6 +131,42 @@ $(document).ready(function(){
                 // adavance in prog
                 prog_step = 0;
             }
-        } 
+        }
+
+        /*
+         * Generate code
+         */ 
+        generate(AdjList);
     })
+
+    /*
+     *
+     */
+    function generate(adjList){
+        var code = "";
+
+
+        for (i in adjList.adjList) {
+            code += 
+            "if(Etapes["+ i +"]){ \n"+
+            "    //UP \n";
+            
+            for (j in adjList.adjList[i].adj) {
+                code += 
+                "    if("+ adjList.adjList[i].adj[j].connection +"){ \n"+
+                "        Etapes["+ j.substr(1) +"] = unactivate = true; \n"+
+                "        digitalWrite("+ adjList.adjList[j.substr(1)].action +", HIGH); \n"+
+                "    } \n";
+            }
+            code += 
+            "    //Down \n"+
+            "    if(unactivate){ \n"+
+            "        Etapes["+ i +"] = unactivate = false; \n"+
+            "        digitalWrite("+ i.action +", LOW); \n"+
+            "    } \n"+
+            "}";
+        }
+
+        $('#Steps').text(code);
+    }
 });
