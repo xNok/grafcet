@@ -1,8 +1,22 @@
-# Cssb
+# Grafcet to Arduino C
 
-Base Frontend tools 
+This web project based on a single web page will help you to generate a boring optimise c code.
 
-## Configuration
+To run te project simply lunch the /dist/index.html in your favorite web browser
+
+## Description
+
+### Grafcet grid layout
+
+### Grafcet desciption
+
+### Code block
+
+### Grafcet interpreteur
+
+## Contribution fonfiguration Configuration
+
+The project is base on [xNok/Cssb](https://github.com/xNok/Cssb)
 
 The project uses Gulp to run tasks. Thus start by intall gulp with [node.js](https://nodejs.org/en/)
 
@@ -27,23 +41,7 @@ finally run the gulp application
 * [swig](https://www.npmjs.com/package/gulp-swig) - html templating engine
 * [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) - Minify JS files
 
-### Recommended Sass modules 
-
-* [cssReset](http://html5doctor.com/html-5-reset-stylesheet/) - Basic boilerplates for HTML 5
-
-* [susy](http://susy.oddbird.net/) - Pretty grid system
-* [breackpoint-sass](http://breakpoint-sass.com/) - Writing simple media queries in Sass
-
-* [Foundation 6](http://foundation.zurb.com/sites/docs/)
-
 ### Recommended code Rules
 
 * [BEM-Block, Element, Modifier](https://en.bem.info/tutorials/quick-start-static/)
 * [SMACSS-Scalable and modular architecture for CSS](https://smacss.com/)
-
-## Basics layouts solution
-
-### Created with susy
-
-* [three Boxes](http://xnok.github.io/Cssb/threeBoxes)
-* [three Images](http://xnok.github.io/Cssb/threeImages)
