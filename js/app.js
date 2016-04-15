@@ -164,14 +164,14 @@ $(document).ready(function(){
                 code += 
                 "    if("+ adjList.adjList[i].adj[j].connection +"){ \n"+
                 "        Etapes["+ j.substr(1) +"] = unactivate = true; \n"+
-                "        digitalWrite("+ adjList.adjList[j.substr(1)].action +", HIGH); \n"+
+                "        digitalWrite("+ adjList.adjList[ parseInt(j.substr(1)) ].action +", HIGH); \n"+
                 "    } \n";
             }
             code += 
             "    //Down \n"+
             "    if(unactivate){ \n"+
             "        Etapes["+ i +"] = unactivate = false; \n"+
-            "        digitalWrite("+ i.action +", LOW); \n"+
+            "        digitalWrite("+ adjList.adjList[ i ].action +", LOW); \n"+
             "    } \n"+
             "}";
         }
