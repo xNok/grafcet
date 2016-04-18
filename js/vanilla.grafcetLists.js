@@ -49,49 +49,53 @@ function AdjList() {
   this.setConnection = adj_setConnection;
 }
 
+/*------ DATA constructors -----*/
+
+function adj_newInitialVertice(){
+    this.initialSteps.push(this.nbr_vertices);
+    this.newVertice();
+}
+
 function adj_newVertice(){
-    AdjList['adjList'][AdjList.nbr_vertices] = new Array();
-    AdjList['adjList'][AdjList.nbr_vertices]["action"] = "";
-    AdjList['adjList'][AdjList.nbr_vertices]["nbr_adj"] = 0;
-    AdjList['adjList'][AdjList.nbr_vertices]["adj"] = new Array();
+    this.adjList[this.nbr_vertices] = new Array();
+    this.adjList[this.nbr_vertices]["action"] = "";
+    this.adjList[this.nbr_vertices]["nbr_adj"] = 0;
+    this.adjList[this.nbr_vertices]["adj"] = new Array();
     AdjList.nbr_vertices++;
 }
 
-function adj_newInitialVertice(){
-    AdjList['initialSteps'].push(AdjList.nbr_vertices);
-    adj_newVertice();
+function adj_newAdj(step, adj, type, connection, data_x, data_y){
+    this.adjList[step]["nbr_adj"]++;
+    this.adjList[step]["adj"]["X"+adj] = new Array();
+    this.adjList[step]["adj"]["X"+adj]["type"] = type;
+    this.adjList[step]["adj"]["X"+adj]["connection"] = connection;
+    this.adjList[step]["adj"]["X"+adj]["data_x"] = data_x;
+    this.adjList[step]["adj"]["X"+adj]["data_y"] = data_y;
 }
+
+/*----- GETTERS & SETTERS -----*/
 
 function adj_setCoordinate(step, data_x, data_y){
-    AdjList['adjList'][step]["data_x"] = data_x;
-    AdjList['adjList'][step]["data_y"] = data_y;
-}
-
-function adj_getX(step){
-    return AdjList.adjList[step].data_x;
-}
-
-function adj_getY(step){
-    return AdjList.adjList[step].data_y;
-}
-
-function adj_newAdj(step, adj, type, connection, data_x, data_y){
-    AdjList['adjList'][step]["nbr_adj"]++;
-    AdjList['adjList'][step]["adj"]["X"+adj] = new Array();
-    AdjList['adjList'][step]["adj"]["X"+adj]["type"] = type;
-    AdjList['adjList'][step]["adj"]["X"+adj]["connection"] = connection;
-    AdjList['adjList'][step]["adj"]["X"+adj]["data_x"] = data_x;
-    AdjList['adjList'][step]["adj"]["X"+adj]["data_y"] = data_y;
+    this.adjList[step]["data_x"] = data_x;
+    this.adjList[step]["data_y"] = data_y;
 }
 
 function adj_setAction(step, action){
-    AdjList['adjList'][step]["action"] = action;
+    this.adjList[step]["action"] = action;
 }
 
 function adj_setConnection(step1, step2, type ,connection){
-    AdjList['adjList'][step]["adj"]["X"+step2] = new Array();
-    AdjList['adjList'][step]["adj"]["X"+step2]["type"] = type;
-    AdjList['adjList'][step]["adj"]["X"+step2]["connection"] = connection;
+    this.adjList[step]["adj"]["X"+step2] = new Array();
+    this.adjList[step]["adj"]["X"+step2]["type"] = type;
+    this.adjList[step]["adj"]["X"+step2]["connection"] = connection;
+}
+
+function adj_getX(step){
+    return this.adjList[step].data_x;
+}
+
+function adj_getY(step){
+    return this.adjList[step].data_y;
 }
 
 //--------------------------------\\
