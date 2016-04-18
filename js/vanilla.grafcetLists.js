@@ -19,14 +19,14 @@ function Edge(step1, step2, receptivity, type){
 // .
 // +--_ nbr_vertices int
 // +--_ initialSteps int[]
-// +--_ adjList
+// +--_ adjList []
 // |  +--_ step
 // |  |  +--_ action
 // |  |  +--_ coordinate
 // |  |  |  +-- data_x
 // |  |  |  +-- data_y
 // |  |  +--_ nbr_vertices int
-// |  |  +--_ adj
+// |  |  +--_ adj []
 // |  |  |  +--_ step
 // |  |  |  |  +-- type
 // |  |  |  |  +-- connection

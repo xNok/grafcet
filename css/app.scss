@@ -53,6 +53,7 @@ $size: 50;
 
 ul, ol {
     list-style: none;
+
 }
 
 //> This is a very basic css Reset
@@ -154,6 +155,13 @@ body{
 
 #edges td:hover{
     background-color: #C5C1C1;
+}
+
+#edges input{
+    float: right;
+    width: initial;
+    height: 1.5em;
+    margin: 0;
 }
 
 /**

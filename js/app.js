@@ -140,12 +140,9 @@ $(document).ready(function(){
                 // adavance in prog
                 prog_step = 0;
             }
-        }
 
-        /*
-         * Generate code
-         */ 
-        generate(AdjList);
+            generate(AdjList);
+        }
     })
 
     /*
@@ -178,4 +175,24 @@ $(document).ready(function(){
 
         $('#Steps').text(code);
     }
+
+    /* Contrôles */
+    $("#button_fbw").click(function(){
+        alert();
+    })
+    $("#button_bw").click(function(){
+        alert();
+    })
+    $("#button_play").click(function(){
+        AdjList.initialSteps
+    })    
+    $("#button_stop").click(function(){
+        alert();
+    })
+    $("#button_fw").click(function(){
+        alert();
+    })
+    $("#button_ffw").click(function(){
+        alert();
+    })
 });

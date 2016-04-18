@@ -26,6 +26,7 @@
             .addClass('vertices')
             .attr('data_step', index )
             .text(index + " -> " + value.action + " @(" + value.data_x + "," +  value.data_y +")")
+            .append('<input type="text" placeholder="action"/>')
             .appendTo(cList);
             var ul = $('<ul/>')
             .addClass('adj')
@@ -37,6 +38,7 @@
                 .addClass('adj')
                 .text(index + " -> " + value.adj[index].type + ", " + value.adj[index].connection)
                 .attr('data_step', index)
+                .append('<input type="text" placeholder="receptivity"/>')
                 .appendTo(ul);
             }
         });
