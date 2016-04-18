@@ -19,6 +19,7 @@ function Edge(step1, step2, receptivity, type){
 // .
 // +--_ nbr_vertices int
 // +--_ initialSteps int[]
+// +--_  int[]
 // +--_ adjList []
 // |  +--_ step
 // |  |  +--_ action
@@ -30,6 +31,8 @@ function Edge(step1, step2, receptivity, type){
 // |  |  |  +--_ step
 // |  |  |  |  +-- type
 // |  |  |  |  +-- connection
+// |  |  |  |  +-- data_x
+// |  |  |  |  +-- data_y
 
 function AdjList() {
   this.nbr_vertices = 0;
@@ -47,16 +50,15 @@ function AdjList() {
 }
 
 function adj_newVertice(){
-    step = AdjList['nbr_vertices'];
-    AdjList['adjList'][step] = new Array();
-    AdjList['adjList'][step]["action"] = "";
-    AdjList['adjList'][step]["nbr_adj"] = 0;
-    AdjList['adjList'][step]["adj"] = new Array();
-    AdjList['nbr_vertices']++;
+    AdjList['adjList'][AdjList.nbr_vertices] = new Array();
+    AdjList['adjList'][AdjList.nbr_vertices]["action"] = "";
+    AdjList['adjList'][AdjList.nbr_vertices]["nbr_adj"] = 0;
+    AdjList['adjList'][AdjList.nbr_vertices]["adj"] = new Array();
+    AdjList.nbr_vertices++;
 }
 
 function adj_newInitialVertice(){
-    AdjList['initialSteps'].push(step);
+    AdjList['initialSteps'].push(AdjList.nbr_vertices);
     adj_newVertice();
 }
 
@@ -73,11 +75,13 @@ function adj_getY(step){
     return AdjList.adjList[step].data_y;
 }
 
-function adj_newAdj(step, adj, type, connection){
+function adj_newAdj(step, adj, type, connection, data_x, data_y){
     AdjList['adjList'][step]["nbr_adj"]++;
     AdjList['adjList'][step]["adj"]["X"+adj] = new Array();
     AdjList['adjList'][step]["adj"]["X"+adj]["type"] = type;
     AdjList['adjList'][step]["adj"]["X"+adj]["connection"] = connection;
+    AdjList['adjList'][step]["adj"]["X"+adj]["data_x"] = data_x;
+    AdjList['adjList'][step]["adj"]["X"+adj]["data_y"] = data_y;
 }
 
 function adj_setAction(step, action){

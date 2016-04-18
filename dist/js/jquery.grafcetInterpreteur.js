@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#button_fbw").click(function(){alert()}),$("#button_bw").click(function(){alert()}),$("#button_play").click(function(){for(i in AdjList.initialSteps.length)alert(i)}),$("#button_stop").click(function(){alert()}),$("#button_fw").click(function(){alert()}),$("#button_ffw").click(function(){alert()})});

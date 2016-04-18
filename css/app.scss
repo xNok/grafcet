@@ -122,15 +122,21 @@ body{
     .content{
         position: absolute;
         top: 50%;
-        left: 50%;
-        bottom: 0;
-        right: 0;
-        text-align: center;
         line-height: 250%;
         
         margin: 0;
         margin-right: -50%;
         transform: translate(-50%, -50%);
+    }
+
+    &.g_step .content{
+        position: absolute;
+        left: 50%;
+        text-align: center;
+    }
+
+    &.g_trans .content{
+        left: 75%;
     }
 }
 
@@ -159,9 +165,17 @@ body{
 
 #edges input{
     float: right;
-    width: initial;
+    width: 50%;
     height: 1.5em;
     margin: 0;
+}
+
+.activeStep{
+    background-color: #FA9F9F!important;
+}
+
+.activeTrans{
+    background-color: #B4FA9F!important;
 }
 
 /**

@@ -5,7 +5,6 @@ $(document).foundation();
 * 1 - transition required
 */
 var prog_step=0;
-var step=0;
 var transition=0;
 var adj_waiting_step = 0;
 
@@ -31,15 +30,15 @@ AdjList.setCoordinate(5,6,5);
 AdjList.newVertice();
 AdjList.setCoordinate(6,8,4);
 
-AdjList.newAdj(0, 1, "join" , "i1");
-AdjList.newAdj(0, 2, "join" , "i2");
-AdjList.newAdj(1, 3, "join" , "i2");
-AdjList.newAdj(2, 3, "join" , "i1");
-AdjList.newAdj(3, 4, "join" , "i3");
-AdjList.newAdj(3, 5, "join" , "i3");
-AdjList.newAdj(4, 6, "join" , "i4");
-AdjList.newAdj(5, 6, "join" , "i5");
-AdjList.newAdj(6, 0, "join" , "i2");
+AdjList.newAdj(0, 1, "join" , "i1",1,3);
+AdjList.newAdj(0, 2, "join" , "i2",1,5);
+AdjList.newAdj(1, 3, "join" , "i2",3,3);
+AdjList.newAdj(2, 3, "join" , "i1",3,5);
+AdjList.newAdj(3, 4, "fork" , "i3",5,4);
+AdjList.newAdj(3, 5, "fork" , "i3",5,4);
+AdjList.newAdj(4, 6, "merge" , "i4",7,4);
+AdjList.newAdj(5, 6, "merge" , "i4",7,4);
+AdjList.newAdj(6, 0, "jump" , "i2",9,4);
 
 
 AdjList.setAction(0, "L_R1");
@@ -85,8 +84,8 @@ $(document).ready(function(){
         */
         if(active_item.hasClass('step')){
             //Grid
-            t.drawStepOnGrid(step);
-            t.attr('data-step',step);
+            t.drawStepOnGrid(AdjList.nbr_vertices);
+            t.attr('data-step',AdjList.nbr_vertices);
             //adj List
             if(active_item.attr("data-type") === "Initial_Step"){
                 AdjList.newInitialVertice();
@@ -100,7 +99,6 @@ $(document).ready(function(){
 
             //preparation next step
             $('#adjList').adj_draw();
-            step++;
         }
 
         /*
@@ -176,23 +174,5 @@ $(document).ready(function(){
         $('#Steps').text(code);
     }
 
-    /* Contrôles */
-    $("#button_fbw").click(function(){
-        alert();
-    })
-    $("#button_bw").click(function(){
-        alert();
-    })
-    $("#button_play").click(function(){
-        AdjList.initialSteps
-    })    
-    $("#button_stop").click(function(){
-        alert();
-    })
-    $("#button_fw").click(function(){
-        alert();
-    })
-    $("#button_ffw").click(function(){
-        alert();
-    })
+
 });
