@@ -43,31 +43,57 @@ $(document).ready(function(){
 
     $("#button_fw").click(function(){
         var activatedStepT = [];
+        var unactivate = false;
 
         //Executuion Loop
         $.each(AdjList.activatedStep, function(i, v){
-              
-              //draw transition
-              for(j in AdjList.adjList[parseInt(v)].adj){
+
+            for(j in AdjList.adjList[parseInt(v)].adj){
                 var trans_x = AdjList.adjList[v].adj[j].data_x;
                 var trans_y = AdjList.adjList[v].adj[j].data_y;
-                if($(".g_trans[data-x='"+trans_x+"'][data-y='"+trans_y+"']").hasClass('activeTrans')){
-                    //TODO avoid duplicate
-                    
-                    var node = parseInt(j.substr(1));
+                var type = AdjList.adjList[v].adj[j].type;
+                var connection = AdjList.adjList[v].adj[j].connection;
 
-                    if(activatedStepT.indexOf(node)){
-                        activatedStepT.push(node);
+                // transition valid ?
+                if($(".g_trans[data-x='"+trans_x+"'][data-y='"+trans_y+"']").hasClass('activeTrans')){
+                    var skip = false;
+
+                    if(type === "merge"){
+                        var s = connection.split(".");
+                        var ss = parseInt(s[1].substr(1));
+                        console.log(s);
+                        console.log(ss);
+                        console.log(AdjList.activatedStep.indexOf(ss));
+                        skip = (AdjList.activatedStep.indexOf(ss) === -1 ? true :false); 
                     }
-                    //unativate on state vector
-                    stateVectorT[v] = 0;
+
+                    if(!skip){
+                        var node = parseInt(j.substr(1));                  
+                        //avoid duplicate
+                        if(activatedStepT.indexOf(node)){
+                            activatedStepT.push(node);
+                            stateVectorT[node] = 1;
+                        }
+
+                        // at leat transition is valid
+                        unactivate = true;
+                    }
                 }
             }
+            // unactivite state v ?
+            if(!unactivate){
+                activatedStepT.push(v);
+            }else{
+                stateVectorT[v] = 0;
+            }
+
+            // init for next loop
+            unactivate = false;
         });
 
         //Detect grafcet evolution
         if(activatedStepT.length != 0){
-            //Down
+            //Down all states
             $(".activeStep").toggleClass("activeStep");
 
             //Update
@@ -77,7 +103,6 @@ $(document).ready(function(){
             //UP
             $.each(AdjList.activatedStep, function(i, v){
                 var t = selectCell(AdjList.adjList[v].data_x, AdjList.adjList[v].data_y).toggleClass("activeStep");
-                stateVectorT[v] = 1;
             });
 
             //draw state vector

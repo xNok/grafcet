@@ -38,9 +38,17 @@
       for(j in adjList.adjList[i].adj){
         var trans_x = adjList.adjList[i].adj[j].data_x;
         var trans_y = adjList.adjList[i].adj[j].data_y;
+        var type = AdjList.adjList[i].adj[j].type;
+        var connection = AdjList.adjList[i].adj[j].connection;
+
+        // delete additinnal condition on prompt
+        if(type === "merge"){
+          connection = connection.slice(0,-3);
+        }
+
         $(".g_trans[data-x='"+trans_x+"'][data-y='"+trans_y+"']")
         .append(svg_get("join"))
-        .drawStepOnGrid(adjList.adjList[i].adj[j].connection);
+        .drawStepOnGrid(connection);
       }
     }
 

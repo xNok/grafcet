@@ -28,7 +28,11 @@ AdjList.setCoordinate(4,6,3);
 AdjList.newVertice();
 AdjList.setCoordinate(5,6,5);
 AdjList.newVertice();
-AdjList.setCoordinate(6,8,4);
+AdjList.setCoordinate(6,8,3);
+AdjList.newVertice();
+AdjList.setCoordinate(7,8,5);
+AdjList.newVertice();
+AdjList.setCoordinate(8,10,4);
 
 AdjList.newAdj(0, 1, "join" , "i1",1,3);
 AdjList.newAdj(0, 2, "join" , "i2",1,5);
@@ -36,10 +40,11 @@ AdjList.newAdj(1, 3, "join" , "i2",3,3);
 AdjList.newAdj(2, 3, "join" , "i1",3,5);
 AdjList.newAdj(3, 4, "fork" , "i3",5,4);
 AdjList.newAdj(3, 5, "fork" , "i3",5,4);
-AdjList.newAdj(4, 6, "merge" , "i4",7,4);
-AdjList.newAdj(5, 6, "merge" , "i4",7,4);
-AdjList.newAdj(6, 0, "jump" , "i2",9,4);
-
+AdjList.newAdj(4, 6, "join" , "i4",7,3);
+AdjList.newAdj(5, 7, "join" , "i3",7,5);
+AdjList.newAdj(6, 8, "merge" , "i2.X7",9,4);
+AdjList.newAdj(7, 8, "merge" , "i2.X6",9,4);
+AdjList.newAdj(8, 0, "jump" , "i3",11,4);
 
 AdjList.setAction(0, "L_R1");
 AdjList.setAction(1, "L_G1");
@@ -48,6 +53,8 @@ AdjList.setAction(3, "L_R1");
 AdjList.setAction(4, "L_G2");
 AdjList.setAction(5, "L_Y2");
 AdjList.setAction(6, "L_R2");
+AdjList.setAction(7, "L_Y2");
+AdjList.setAction(8, "L_R2");
 
 console.log(AdjList);
 
