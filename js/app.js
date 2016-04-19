@@ -102,7 +102,7 @@ $(document).ready(function(){
                 t.append(svg_get("step"));
             }
 
-            adj_setCoordinate(step,t.attr("data-x"),t.attr("data-y"));
+            AdjList.setCoordinate(AdjList.nbr_vertices-1,t.attr("data-x"),t.attr("data-y"));
 
             //preparation next step
             $('#adjList').adj_draw();
@@ -129,16 +129,16 @@ $(document).ready(function(){
                 $("#edgeList").edg_write2lastRowCell(2, type);
                 $("#edgeList").edg_addRow();
                 //AdjList
-                adj_newAdj(adj_waiting_step, data_step, type, "");
+                AdjList.newAdj(adj_waiting_step, data_step, type, "");
                 $('#adjList').adj_draw();;
 
                 //calculate
-                var deltaX = adj_getX(adj_waiting_step)-adj_getX(data_step);
-                var deltaY = adj_getY(adj_waiting_step)-adj_getY(data_step);
+                var deltaX = AdjList.getX(adj_waiting_step)-AdjList.getX(data_step);
+                var deltaY = AdjList.getY(adj_waiting_step)-AdjList.getY(data_step);
 
                 if(deltaX === -2 && deltaY === 0){
-                    var trans_x = Number(adj_getX(data_step))-1;
-                    var trans_y = adj_getY(data_step);
+                    var trans_x = Number(AdjList.getX(data_step))-1;
+                    var trans_y = AdjList.getY(data_step);
                     $(".g_trans[data-x='"+trans_x+"'][data-y='"+trans_y+"']").append(svg_get("join"));
                 }
 

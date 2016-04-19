@@ -76,6 +76,7 @@ function adj_newAdj(step, adj, type, connection, data_x, data_y){
 /*----- GETTERS & SETTERS -----*/
 
 function adj_setCoordinate(step, data_x, data_y){
+    console.log(this);
     this.adjList[step]["data_x"] = data_x;
     this.adjList[step]["data_y"] = data_y;
 }
