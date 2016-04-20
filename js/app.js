@@ -155,8 +155,6 @@ $(document).ready(function(){
      */
     function generate(adjList){
         var code = "";
-        var sub_code = "";
-
         var code_action = "";
 
         // Version 1 - non conforme
@@ -186,26 +184,22 @@ $(document).ready(function(){
 
         /***** CalculerFEtapes() *****/
         code += 
-        "inline void CalculerFEtapes() {";
+        "inline void CalculerFEtapes() {\n";
         for (i in adjList.adjList) {
-            //init subcode
-            sub_code = "";
-
             code += 
-            "if(Etapes["+ i +"]){\n";
+            "   if(Etapes["+ i +"]){\n";
 
             for (j in adjList.adjList[i].adj) {
                 code += 
-                "FEtapes["+ parseInt(j.substr(1)) +"] = "+adjList.adjList[i].adj[j].connection +";\n";
-                sub_code +=   "|| FEtapes["+ parseInt(j.substr(1)) +"] ";
+                "       if("+ receptivityConvertor(adjList.adjList[i].adj[j].connection) +"){;\n"+
+                "           FEtapes["+ parseInt(j.substr(1)) +"] = 1;\n"+
+                "           FEtapes["+ i +"] = 0;\n"+
+                "       }\n";
             }
-
-            code += 
-            "FEtapes["+ i +"] = !( "+ sub_code.substr(3) +");\n"+
-            "}\n";
+            "   }\n";
         }
         code += 
-        "}";
+        "}\n";
 
         /***** AffectationSorties() *****/
         code_action +=
@@ -217,6 +211,28 @@ $(document).ready(function(){
         code_action +=
         "}\n";
 
+        /****** Write *****/
         $('#Steps').text(code + "\n" + code_action);
     }
 });
+
+function receptivityConvertor(str){
+    str = str.replace(".", " && ");
+    str = str.replace("+", " || ");
+    console.log(str);
+    ss = str.split(" ");
+    console.log(ss);
+    receptivity = "";
+
+    for(var i =0; i < ss.length ; i++){
+        console.log(ss[i]);
+        if(/(^X[1-9]+$)/.test(ss[i])){
+            receptivity += "Etapes["+ ss[i].substr(1) +"]"
+        }else{
+            receptivity += ss[i];
+        }
+    }
+
+    console.log(receptivity);
+    return receptivity;
+}
