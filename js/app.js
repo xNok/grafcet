@@ -155,31 +155,68 @@ $(document).ready(function(){
      */
     function generate(adjList){
         var code = "";
+        var sub_code = "";
 
+        var code_action = "";
 
-        for (i in adjList.adjList) {
-            code += 
-            "if(Etapes["+ i +"]){ \n"+
-            "    //UP \n";
+        // Version 1 - non conforme
+        // for (i in adjList.adjList) {
+        //     code += 
+        //     "if(Etapes["+ i +"]){ \n"+
+        //     "    //UP \n";
             
+        //     for (j in adjList.adjList[i].adj) {
+        //         code += 
+        //         "    if("+ adjList.adjList[i].adj[j].connection +"){ \n"+
+        //         "        Etapes["+ j.substr(1) +"] = unactivate = true; \n"+
+        //         "        digitalWrite("+ adjList.adjList[ parseInt(j.substr(1)) ].action +", HIGH); \n"+
+        //         "    } \n";
+        //     }
+        //     code += 
+        //     "    //Down \n"+
+        //     "    if(unactivate){ \n"+
+        //     "        Etapes["+ i +"] = unactivate = false; \n"+
+        //     "        digitalWrite("+ adjList.adjList[ i ].action +", LOW); \n"+
+        //     "    } \n"+
+        //     "}";
+        // }
+
+        // $('#Steps').text(code);
+        // 
+
+        /***** CalculerFEtapes() *****/
+        code += 
+        "inline void CalculerFEtapes() {";
+        for (i in adjList.adjList) {
+            //init subcode
+            sub_code = "";
+
+            code += 
+            "if(Etapes["+ i +"]){\n";
+
             for (j in adjList.adjList[i].adj) {
                 code += 
-                "    if("+ adjList.adjList[i].adj[j].connection +"){ \n"+
-                "        Etapes["+ j.substr(1) +"] = unactivate = true; \n"+
-                "        digitalWrite("+ adjList.adjList[ parseInt(j.substr(1)) ].action +", HIGH); \n"+
-                "    } \n";
+                "FEtapes["+ parseInt(j.substr(1)) +"] = "+adjList.adjList[i].adj[j].connection +";\n";
+                sub_code +=   "|| FEtapes["+ parseInt(j.substr(1)) +"] ";
             }
+
             code += 
-            "    //Down \n"+
-            "    if(unactivate){ \n"+
-            "        Etapes["+ i +"] = unactivate = false; \n"+
-            "        digitalWrite("+ adjList.adjList[ i ].action +", LOW); \n"+
-            "    } \n"+
-            "}";
+            "FEtapes["+ i +"] = !( "+ sub_code.substr(3) +");\n"+
+            "}\n";
         }
+        code += 
+        "}";
 
-        $('#Steps').text(code);
+        /***** AffectationSorties() *****/
+        code_action +=
+        "inline void AffectationSorties() {\n";
+        for (i in adjList.adjList) {
+            code_action +=
+            "(Etapes["+ i +"]) ? digitalWrite("+ adjList.adjList[ i ].action +", HIGH) : digitalWrite("+ adjList.adjList[ i ].action +", LOW);\n";
+        }
+        code_action +=
+        "}\n";
+
+        $('#Steps').text(code + "\n" + code_action);
     }
-
-
 });
