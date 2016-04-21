@@ -41,7 +41,7 @@ AdjList.newAdj(2, 3, "join" , "i1",3,5);
 AdjList.newAdj(3, 4, "fork" , "i3",5,4);
 AdjList.newAdj(3, 5, "fork" , "i3",5,4);
 AdjList.newAdj(4, 6, "join" , "i4",7,3);
-AdjList.newAdj(5, 7, "join" , "i3",7,5);
+AdjList.newAdj(5, 7, "join" , "i1",7,5);
 AdjList.newAdj(6, 8, "merge" , "i2.X7",9,4);
 AdjList.newAdj(7, 8, "merge" , "i2.X6",9,4);
 AdjList.newAdj(8, 0, "jump" , "i3",11,4);
@@ -53,8 +53,8 @@ AdjList.setAction(3, "L_R1");
 AdjList.setAction(4, "L_G2");
 AdjList.setAction(5, "L_Y2");
 AdjList.setAction(6, "L_R2");
-AdjList.setAction(7, "L_Y2");
-AdjList.setAction(8, "L_R2");
+AdjList.setAction(7, "L_G1");
+AdjList.setAction(8, "L_Y2");
 
 console.log(AdjList);
 
@@ -191,11 +191,12 @@ $(document).ready(function(){
 
             for (j in adjList.adjList[i].adj) {
                 code += 
-                "       if("+ receptivityConvertor(adjList.adjList[i].adj[j].connection) +"){;\n"+
-                "           FEtapes["+ parseInt(j.substr(1)) +"] = 1;\n"+
-                "           FEtapes["+ i +"] = 0;\n"+
+                "       if("+ receptivityConvertor(adjList.adjList[i].adj[j].connection) +"){\n"+
+                "           FEtapes["+ parseInt(j.substr(1)) +"] = 1; FEtapes["+ i +"] = 0;\n"+
+                "           digitalWrite("+ adjList.adjList[ i ].action +", HIGH); \n"+
                 "       }\n";
             }
+            code += 
             "   }\n";
         }
         code += 
@@ -206,7 +207,7 @@ $(document).ready(function(){
         "inline void AffectationSorties() {\n";
         for (i in adjList.adjList) {
             code_action +=
-            "(Etapes["+ i +"]) ? digitalWrite("+ adjList.adjList[ i ].action +", HIGH) : digitalWrite("+ adjList.adjList[ i ].action +", LOW);\n";
+            "if(Etapes["+ i +"]) digitalWrite("+ adjList.adjList[ i ].action +", LOW);\n";
         }
         code_action +=
         "}\n";
