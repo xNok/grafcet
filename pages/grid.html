@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+{% include "../partials/head.html" %}
+
+<body>
+
+    <div class="row">
+        <div class="medium-8 columns">
+            {% include "../partials/grid.html" %}
+        </div>
+        <div id="edges" class="medium-4 columns">
+            <div class="row">
+                <div class="g_item g_step" data-x="0" data-y="0"><div class="content"></div></div><p>Empty</p>
+            </div>
+            <div class="row">
+                <div class="g_item g_step" data-x="0" data-y="4" data-step="0"><div class="content">0</div><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sprite.svg#step"></use></svg><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sprite.svg#initStep"></use></svg></div><p>Initial</p>
+            </div>
+            <div class="row">
+                <div class="g_item g_step" data-x="2" data-y="3" data-step="1"><div class="content">1</div><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sprite.svg#step"></use></svg></div><p>Step</p> 
+            </div>
+        </div>
+
+        {% include "../partials/js_grid.html" %}
+    </div>
+
+</body>
+
+</html>

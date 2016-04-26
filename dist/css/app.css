@@ -3601,11 +3601,16 @@ body {
 /**
  * 3.0 - Elements/Modules
  */
-#grafcet .item, #grafcet .g_item {
+/**
+ * General
+ */
+.g_item {
+  width: 10%;
   background-color: #FFF;
   float: left;
+  border: 1px solid #000;
   position: relative; }
-  #grafcet .item p, #grafcet .g_item p {
+  .g_item p {
     margin: 0;
     position: absolute;
     top: 50%;
@@ -3614,23 +3619,7 @@ body {
     -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%); }
-
-#grafcet .g_item {
-  width: 10%; }
-  #grafcet .g_item.g_step:before {
-    content: "";
-    display: block;
-    padding-top: 100%; }
-  #grafcet .g_item.g_trans:before {
-    content: "";
-    display: block;
-    padding-top: 30%; }
-  #grafcet .g_item.g_step svg, #grafcet .g_item.g_trans svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; }
-  #grafcet .g_item .content {
+  .g_item .content {
     position: absolute;
     top: 50%;
     line-height: 250%;
@@ -3639,15 +3628,38 @@ body {
     -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%); }
-  #grafcet .g_item.g_step .content {
+  .g_item svg {
     position: absolute;
-    left: 50%;
-    text-align: center; }
-  #grafcet .g_item.g_trans .content {
-    left: 75%; }
+    top: 0;
+    left: 0;
+    width: 100%; }
 
-.item:hover, #grafcet .g_item:hover {
+/**
+ * Hovers
+ */
+.g_item:hover {
   background-color: #C5C1C1; }
+
+/**
+ * Special Items
+ */
+.g_item.g_step:before {
+  content: "";
+  display: block;
+  padding-top: 100%; }
+
+.g_item.g_step .content {
+  position: absolute;
+  left: 50%;
+  text-align: center; }
+
+.g_item.g_trans:before {
+  content: "";
+  display: block;
+  padding-top: 30%; }
+
+.g_item.g_trans .content {
+  left: 75%; }
 
 .active_item, .active_Adj {
   background-color: #E5ACAC; }

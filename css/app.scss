@@ -75,13 +75,21 @@ body{
 /**
  * 3.0 - Elements/Modules
  */
-#grafcet .item, #grafcet .g_item{
 
+$nbr_col: 10;
+
+
+
+/**
+ * General
+ */
+.g_item{
+    width: 100% / $nbr_col;
     background-color: #FFF;
-    //padding: 10px;
     float: left;
 
-    //border: 1px solid #000;
+    //debug
+    border: 1px solid #000;
     
     position: relative;
 
@@ -94,30 +102,6 @@ body{
         margin-right: -50%;
         transform: translate(-50%, -50%);
     }
-}
-
-#grafcet .g_item{
-    width: 10%;
-
-    &.g_step:before{
-        content: "";
-        display: block;
-        padding-top: 100%;
-    }
-
-    &.g_trans:before{
-        content: "";
-        display: block;
-        padding-top: 30%;
-    }
-
-    &.g_step svg, &.g_trans svg{
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        width: 100%;
-    }
 
     .content{
         position: absolute;
@@ -129,20 +113,53 @@ body{
         transform: translate(-50%, -50%);
     }
 
+    svg{
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+    }
+}
+
+/**
+ * Hovers
+ */
+.g_item:hover{
+    background-color: #C5C1C1;
+}
+
+/**
+ * Special Items
+ */
+.g_item{
+
+    //*** Steps ***//
+    &.g_step:before{
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
+
     &.g_step .content{
         position: absolute;
         left: 50%;
         text-align: center;
     }
 
+    //*** Transitions ***//
+
+    &.g_trans:before{
+        content: "";
+        display: block;
+        padding-top: 30%;
+    }
+
     &.g_trans .content{
         left: 75%;
-    }
+    }        
 }
 
-.item:hover, #grafcet .g_item:hover{
-    background-color: #C5C1C1;
-}
 
 .active_item, .active_Adj{
     background-color: #E5ACAC;
